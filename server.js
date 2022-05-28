@@ -1,7 +1,7 @@
 // Setup empty JS object to act as endpoint for all routes
 
 
-projectData = {};
+let projectData = {};
 // Require Express to run server and routes
 const express = require('express');
 const cors = require('cors');
@@ -29,3 +29,14 @@ app.listen(port,listen)
 function listen(){
     console.log(`The server is running at localhost:${port}`)
 }
+
+// GET method route
+app.get('/projectData', (req, res) => {
+    res.send(projectData)
+})
+
+// POST method route
+app.post('/projectData', (req, res) => {
+    projectData = req.body
+    res.send({status:"the projectData has been saved"})
+})
